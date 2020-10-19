@@ -6,12 +6,15 @@ import { createStore } from 'redux';
     const $plusButton = document.querySelector('.plus');
     const $minusButton = document.querySelector('.minus');
 
+    const PLUS_STR = 'PLUS';
+    const MINUS_STR = 'MINUS';
+
     const countModifier = (count = 0, action) => {
         switch (action.type) {
-            case 'PLUS': {
+            case PLUS_STR: {
                 return count + 1;
             }
-            case 'MINUS': {
+            case MINUS_STR: {
                 return count - 1;
             }
             default: {
@@ -29,11 +32,11 @@ import { createStore } from 'redux';
     counterStore.subscribe(onChange);
 
     const handlePlus = () => {
-        counterStore.dispatch({ type: 'PLUS' });
+        counterStore.dispatch({ type: PLUS_STR });
     };
 
     const handleMinus = () => {
-        counterStore.dispatch({ type: 'MINUS' });
+        counterStore.dispatch({ type: MINUS_STR });
     };
 
     $plusButton.addEventListener('click', handlePlus);

@@ -4,9 +4,11 @@
 
 ## Vanilla Redux
 
-![redux-flow](image/redux-flow.png)
+> Make vinilla redux counter : If you look source code, change branch `vanilla-redux-counter`
 
-> [Reference](https://medium.com/@aurelie.lebec/redux-and-react-native-simple-login-example-flow-c4874cf91dde)
+![preview-counter](image/preview-counter.gif)
+
+<br />
 
 `Basic Summary of Redux:`
 
@@ -26,7 +28,7 @@ Reducer is a `FUNCTION` that modifies my data. And if reducer return <u>somethin
 
 > What is action?
 
-Action is `OBJECT`.I can use dispatch method with action as parameter to call reducer.
+Action is `OBJECT`. I can use dispatch method with action as parameter to call reducer. Action is a way to communicate reducer. In fact, **I can pass the action using dispatch method to communicate reducer.**
 
 `store.dispatch(action object)`
 
@@ -41,3 +43,11 @@ It is flow:
 To do this, I can use subscribe method in store. **Subscribe method allow for me to know current state in store.** If state change, store call subscribe and parameter's function.
 
 `store.subscribe(function)`
+
+<br />
+
+> Summarized Diagram [[Reference]](https://medium.com/@aurelie.lebec/redux-and-react-native-simple-login-example-flow-c4874cf91dde)
+
+![redux-flow](image/redux-flow.png)
+
+>
