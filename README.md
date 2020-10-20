@@ -8,7 +8,7 @@
 
 > Make vinilla redux counter : If you look source code, change branch `vanilla-redux-counter`
 
-![preview-counter](image/preview-counter.gif)
+> I learned big picture of redux and data flow of redux from counter example.
 
 <br />
 
@@ -55,6 +55,8 @@ To do this, I can use subscribe method in store. **Subscribe method allow for me
 ### TodoApp
 
 > Make vinilla redux todoapp : If you look source code, change branch `vanilla-redux-todoapp`
+
+> I learned three principle of redux. Especially, I understanded how to change state in redux.
 
 <br />
 
