@@ -24,14 +24,15 @@ body {
     padding: 0.2rem 0.4rem;
     width: 70%;
 }
-.todo-button {
-    padding: 0.2rem 0.4rem;
-    text-align: center;
-}
 li {
     list-style: none;
     margin: 0.2rem 0;
 }
 .todos {
     margin: 1rem 0;
+}
+button {
+    margin-left: 0.2rem;
+    padding: 0.2rem 0.4rem;
+    text-align: center;
 }
