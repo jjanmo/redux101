@@ -2,43 +2,91 @@ import './index.css';
 import { createStore } from 'redux';
 
 (function () {
-    const $result = document.querySelector('.result');
-    const $plusButton = document.querySelector('.plus');
-    const $minusButton = document.querySelector('.minus');
+    const $wrapper = document.querySelector('.wrapper');
+    const $input = document.querySelector('.todo-input');
+    const $list = document.querySelector('.todos');
 
-    const PLUS_STR = 'PLUS';
-    const MINUS_STR = 'MINUS';
+    const ADD_TODO = 'add-todo';
+    const DELETE_TODO = 'delete-todo';
 
-    const countModifier = (count = 0, action) => {
+    //addTodo, deleteTodo is returning action object
+    const addTodo = (todo) => {
+        return {
+            type: ADD_TODO,
+            todo,
+        };
+    };
+
+    const deleteTodo = (id) => {
+        return {
+            type: DELETE_TODO,
+            id,
+        };
+    };
+
+    const todoReducer = (todos = [], action) => {
         switch (action.type) {
-            case PLUS_STR: {
-                return count + 1;
+            case ADD_TODO: {
+                const newTodo = { todo: action.todo, id: Date.now() };
+                return [newTodo, ...todos];
             }
-            case MINUS_STR: {
-                return count - 1;
+            case DELETE_TODO: {
+                const filteredTodos = todos.filter((todo) => todo.id !== action.id);
+                return filteredTodos;
             }
             default: {
-                return count;
+                return todos;
             }
         }
     };
 
-    const counterStore = createStore(countModifier);
+    const store = createStore(todoReducer);
 
-    const onChange = () => {
-        $result.textContent = counterStore.getState();
+    const dispatchAddTodo = (todo) => {
+        store.dispatch(addTodo(todo));
     };
 
-    counterStore.subscribe(onChange);
-
-    const handlePlus = () => {
-        counterStore.dispatch({ type: PLUS_STR });
+    const dispatchDeleteTodo = (id) => {
+        store.dispatch(deleteTodo(id));
     };
 
-    const handleMinus = () => {
-        counterStore.dispatch({ type: MINUS_STR });
+    const printList = () => {
+        const todos = store.getState();
+        $list.innerHTML = todos
+            .map(
+                (todo) => `
+                    <li id=${todo.id}>
+                        ${todo.todo}
+                        <button>Del</button>
+                    </li>`
+            )
+            .join('');
     };
 
-    $plusButton.addEventListener('click', handlePlus);
-    $minusButton.addEventListener('click', handleMinus);
+    store.subscribe(printList);
+
+    const onDelete = (target) => {
+        const id = parseInt(target.parentElement.id, 10);
+        dispatchDeleteTodo(id);
+    };
+
+    const onSubmit = () => {
+        const _todo = $input.value;
+        dispatchAddTodo(_todo);
+        $input.value = '';
+    };
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        switch (e.target.textContent) {
+            case 'Add': {
+                onSubmit();
+            }
+            case 'Del': {
+                onDelete(e.target);
+            }
+        }
+    };
+
+    $wrapper.addEventListener('click', handleClick);
 })();
