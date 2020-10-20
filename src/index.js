@@ -1,44 +1,21 @@
 import './index.css';
-import { createStore } from 'redux';
 
 (function () {
-    const $result = document.querySelector('.result');
-    const $plusButton = document.querySelector('.plus');
-    const $minusButton = document.querySelector('.minus');
+    const $input = document.querySelector('.todo-input');
+    const $button = document.querySelector('.todo-button');
+    const $list = document.querySelector('.todos');
 
-    const PLUS_STR = 'PLUS';
-    const MINUS_STR = 'MINUS';
-
-    const countModifier = (count = 0, action) => {
-        switch (action.type) {
-            case PLUS_STR: {
-                return count + 1;
-            }
-            case MINUS_STR: {
-                return count - 1;
-            }
-            default: {
-                return count;
-            }
-        }
+    const updateList = (content) => {
+        const $li = document.createElement('li');
+        $li.textContent = content;
+        $list.appendChild($li);
     };
 
-    const counterStore = createStore(countModifier);
-
-    const onChange = () => {
-        $result.textContent = counterStore.getState();
+    const handleClick = (e) => {
+        e.preventDefault();
+        const _content = $input.value;
+        updateList(_content);
     };
 
-    counterStore.subscribe(onChange);
-
-    const handlePlus = () => {
-        counterStore.dispatch({ type: PLUS_STR });
-    };
-
-    const handleMinus = () => {
-        counterStore.dispatch({ type: MINUS_STR });
-    };
-
-    $plusButton.addEventListener('click', handlePlus);
-    $minusButton.addEventListener('click', handleMinus);
+    $button.addEventListener('click', handleClick);
 })();
