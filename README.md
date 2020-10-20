@@ -1,7 +1,5 @@
-# Redux101
-
-> Learn vanilla redux and react-redux
-
-## Vanilla Redux
-
 ## React Redux
+
+### TodoApp
+
+> Make react redux todoapp : If you look source code, change branch `react-redux-todoapp`
