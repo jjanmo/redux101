@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         font-family:'Times New Roman', Times, serif;
+        background-color :#eee;
     }
     a{
         text-decoration : none;
