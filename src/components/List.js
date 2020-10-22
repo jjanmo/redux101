@@ -9,7 +9,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem 0 1rem 3rem;
+    padding: 1rem 3rem;
 `;
 
 function List({ todos }) {

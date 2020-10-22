@@ -4,7 +4,7 @@ import Form from '../components/Form';
 import Header from '../components/Header';
 import List from '../components/List';
 
-const Container = styled.div`
+const Container = styled.section`
     width: 45vw;
     min-height: 80vh;
     margin: 3rem auto;
