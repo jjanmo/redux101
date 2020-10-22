@@ -7,10 +7,13 @@ const EDIT_TODO = 'edit-todo';
 const todoReducer = (todos = [], action) => {
     switch (action.type) {
         case ADD_TODO: {
-            return [];
+            return [
+                { id: Date.now(), todo: action.todo, status: false, date: new Date().toString() },
+                ...todos,
+            ];
         }
         case DELETE_TODO: {
-            return [];
+            return todos.filter((todo) => todo.id !== action.id);
         }
         case EDIT_TODO: {
             return [];
@@ -34,7 +37,7 @@ export const actionCreator = {
     deleteTodo(id) {
         return {
             type: DELETE_TODO,
-            id,
+            id: parseInt(id),
         };
     },
     editTodo() {},

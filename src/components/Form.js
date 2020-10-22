@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { actionCreator } from '../store';
 
 const Container = styled.section`
     margin: 1em auto;
@@ -39,16 +41,50 @@ const Button = styled.button`
     }
 `;
 
-function Form() {
+function Form({ todos, dispatchAddTodo }) {
+    const [todo, setTodo] = useState({
+        title: '',
+        contents: '',
+    });
+
+    const { title, contents } = todo;
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        dispatchAddTodo(todo);
+        setTodo({
+            title: '',
+            contents: '',
+        });
+    };
+
+    const onChange = (e) => {
+        const { value, name } = e.target;
+        setTodo({
+            ...todo,
+            [name]: value,
+        });
+    };
+
     return (
         <Container>
-            <form>
-                <Input type="text" name="title" autoFocus />
+            <form onSubmit={onSubmit}>
+                <Input type="text" name="title" onChange={onChange} value={title} autoFocus />
                 <Button>Add</Button>
-                <Textarea rows="5" />
+                <Textarea name="contents" rows="5" onChange={onChange} value={contents} />
             </form>
         </Container>
     );
 }
 
-export default Form;
+function mapStateToProps(state) {
+    return { todos: state };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatchAddTodo: (todo) => dispatch(actionCreator.addTodo(todo)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
