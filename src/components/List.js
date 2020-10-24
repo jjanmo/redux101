@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Item from './Item';
 
-const Container = styled.div`
+const Container = styled.ul`
     margin: 0 0.5rem;
     border-top: 3px solid #eee;
     display: flex;
