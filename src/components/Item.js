@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -25,6 +25,7 @@ const Title = styled.span`
     margin: 0 0.2rem;
     padding: 0.3rem;
     font-size: 1.2rem;
+    text-decoration: ${(props) => (props.status ? 'line-through' : 'none')};
 `;
 const Button = styled.button`
     all: unset;
@@ -38,12 +39,20 @@ const Button = styled.button`
     background-color: #27ae60;
 `;
 
-function Item({ dispatchDeleteTodo, ...rest }) {
+function Item({ dispatchEditStatus, dispatchDeleteTodo, ...rest }) {
+    const [status, setStatus] = useState(false);
+
+    const onChange = (e) => {
+        const { target } = e;
+        setStatus(target.checked);
+        dispatchEditStatus();
+    };
+
     return (
         <Todo>
-            <input type="checkbox" name="checkbox" />
+            <input type="checkbox" name="checkbox" onChange={onChange} />
             <SLink to={`/${rest.id}`}>
-                <Title>{rest.todo.title}</Title>
+                <Title status={status}>{rest.todo.title}</Title>
             </SLink>
             <Button onClick={dispatchDeleteTodo}>Del</Button>
         </Todo>
@@ -53,6 +62,7 @@ function Item({ dispatchDeleteTodo, ...rest }) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         dispatchDeleteTodo: () => dispatch(actionCreator.deleteTodo(ownProps.id)),
+        dispatchEditStatus: () => dispatch(actionCreator.editStatus(ownProps.id)),
     };
 }
 
