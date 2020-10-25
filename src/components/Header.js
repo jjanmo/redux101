@@ -22,7 +22,7 @@ function Header({ todos }) {
 
     useEffect(() => {
         setCompleted(todos.filter((todo) => todo.status).length);
-    });
+    }, [todos]);
 
     return (
         <Container>
