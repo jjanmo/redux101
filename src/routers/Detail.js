@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import ParsedDate from '../components/ParsedDate';
 
 const Container = styled.section`
     width: 45vw;
@@ -71,14 +72,6 @@ const Button = styled.button`
     }
 `;
 
-function parseDate(string) {
-    const year = string.substring(11, 15);
-    const month = string.substring(4, 7);
-    const date = string.substring(8, 10);
-    const week = string.substring(0, 3);
-    return `${year} ${month} ${date} ${week}`;
-}
-
 function Detail({ todoObj }) {
     return (
         <Container>
@@ -87,7 +80,7 @@ function Detail({ todoObj }) {
                 <span>
                     {todoObj ? (todoObj.status ? 'Completed 👍 | ' : 'Progressing 🙏 | ') : ''}
                 </span>
-                <span>{todoObj ? parseDate(todoObj.date) : ''}</span>
+                {todoObj && <ParsedDate rawDate={todoObj.date} />}
             </Row>
             <Contents>{todoObj?.todo.contents}</Contents>
             <Buttons>
