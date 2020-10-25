@@ -20,9 +20,9 @@ const todoReducer = (todos = [], action) => {
             return [];
         }
         case EDIT_STATUS: {
-            const filteredTodo = todos.filter((todo) => todo.id === action.id)[0];
-            filteredTodo.status = !filteredTodo.status;
-            return todos;
+            return todos.map((todo) =>
+                todo.id === action.id ? { ...todo, status: !todo.status } : todo
+            );
         }
         default: {
             return todos;

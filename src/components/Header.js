@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import ParsedDate from '../components/ParsedDate';
@@ -18,14 +18,18 @@ const Status = styled.div`
 `;
 
 function Header({ todos }) {
-    const completedNumber = useRef(todos.filter((todo) => todo.status).length);
+    const [completed, setCompleted] = useState(todos.filter((todo) => todo.status).length);
+
+    useEffect(() => {
+        setCompleted(todos.filter((todo) => todo.status).length);
+    });
 
     return (
         <Container>
             <SDate>
                 <ParsedDate rawDate={new Date().toString()} />
             </SDate>
-            <Status>{`Completed ${completedNumber.current} | Total ${todos.length}`}</Status>
+            <Status>{`Completed ${completed} | Total ${todos.length}`}</Status>
         </Container>
     );
 }
