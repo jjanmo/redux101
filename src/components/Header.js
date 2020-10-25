@@ -1,26 +1,37 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import ParsedDate from '../components/ParsedDate';
 
 const Container = styled.section`
     margin: 0 0.5rem;
     padding: 2rem 2rem 1rem;
     border-bottom: 3px solid #eee;
 `;
-const Date = styled.h1`
+const SDate = styled.h1`
     color: #0984e3;
+    font-size: 2.5rem;
 `;
 const Status = styled.div`
     color: #74b9ff;
     padding: 1rem;
 `;
 
-function Header() {
+function Header({ todos }) {
+    const completedNumber = useRef(todos.filter((todo) => todo.status).length);
+
     return (
         <Container>
-            <Date>2020년 10월 20일 화요일</Date>
-            <Status>Completed 3 | Totel 5</Status>
+            <SDate>
+                <ParsedDate rawDate={new Date().toString()} />
+            </SDate>
+            <Status>{`Completed ${completedNumber.current} | Total ${todos.length}`}</Status>
         </Container>
     );
 }
 
-export default Header;
+function mapStateToProps(state) {
+    return { todos: state };
+}
+
+export default connect(mapStateToProps)(Header);
