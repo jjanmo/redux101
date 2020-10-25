@@ -50,7 +50,7 @@ function Item({ dispatchEditStatus, dispatchDeleteTodo, ...rest }) {
 
     return (
         <Todo>
-            <input type="checkbox" name="checkbox" onChange={onChange} />
+            <input type="checkbox" name="checkbox" onChange={onChange} checked={rest.status} />
             <SLink to={`/${rest.id}`}>
                 <Title status={status}>{rest.todo.title}</Title>
             </SLink>
