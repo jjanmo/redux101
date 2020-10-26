@@ -6,11 +6,9 @@ import store from './store';
 import GlobalStyles from './globalStyles';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <GlobalStyles />
-            <App />
-        </Provider>
-    </React.StrictMode>,
+    <Provider store={store}>
+        <GlobalStyles />
+        <App />
+    </Provider>,
     document.getElementById('root')
 );

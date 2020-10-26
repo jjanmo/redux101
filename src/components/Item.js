@@ -40,11 +40,7 @@ const Button = styled.button`
 `;
 
 function Item({ dispatchEditStatus, dispatchDeleteTodo, ...rest }) {
-    const [status, setStatus] = useState(false);
-
-    const onChange = (e) => {
-        const { target } = e;
-        setStatus(target.checked);
+    const onChange = () => {
         dispatchEditStatus();
     };
 
@@ -52,7 +48,7 @@ function Item({ dispatchEditStatus, dispatchDeleteTodo, ...rest }) {
         <Todo>
             <input type="checkbox" name="checkbox" onChange={onChange} checked={rest.status} />
             <SLink to={`/${rest.id}`}>
-                <Title status={status}>{rest.todo.title}</Title>
+                <Title status={rest.status}>{rest.todo.title}</Title>
             </SLink>
             <Button onClick={dispatchDeleteTodo}>Del</Button>
         </Todo>

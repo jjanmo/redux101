@@ -62,9 +62,6 @@ const SLink = styled(Link)`
     border-radius: 20px;
     transition: 0.4s;
     &:first-child {
-        background-color: #16a085;
-    }
-    &:last-child {
         background-color: #2980b9;
     }
     &:hover {
@@ -84,9 +81,6 @@ function Detail({ todoObj }) {
             </Row>
             <Contents>{todoObj?.todo.contents}</Contents>
             <Buttons>
-                <SLink to={`/edit/${todoObj.id}`}>
-                    <Button>edit</Button>
-                </SLink>
                 <SLink to="/">
                     <Button>back</Button>
                 </SLink>

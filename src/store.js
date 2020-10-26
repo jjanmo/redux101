@@ -2,32 +2,35 @@ import { createStore } from 'redux';
 
 const ADD_TODO = 'add-todo';
 const DELETE_TODO = 'delete-todo';
-const EDIT_TODO = 'edit-todo';
 const EDIT_STATUS = 'edit-status';
 
-const todoReducer = (todos = [], action) => {
+const todosLocalStorage = window.localStorage;
+
+const todoReducer = (todos = JSON.parse(todosLocalStorage.getItem('todos')) || [], action) => {
     switch (action.type) {
         case ADD_TODO: {
-            return [
+            todos = [
                 { id: Date.now(), todo: action.todo, status: false, date: new Date().toString() },
                 ...todos,
             ];
+            break;
         }
         case DELETE_TODO: {
-            return todos.filter((todo) => todo.id !== action.id);
-        }
-        case EDIT_TODO: {
-            return [];
+            todos = todos.filter((todo) => todo.id !== action.id);
+            break;
         }
         case EDIT_STATUS: {
-            return todos.map((todo) =>
+            todos = todos.map((todo) =>
                 todo.id === action.id ? { ...todo, status: !todo.status } : todo
             );
+            break;
         }
         default: {
-            return todos;
+            break;
         }
     }
+    todosLocalStorage.setItem('todos', JSON.stringify(todos));
+    return todos;
 };
 
 const store = createStore(todoReducer);
