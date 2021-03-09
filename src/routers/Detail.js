@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ParsedDate from '../components/ParsedDate';
 
@@ -48,27 +49,23 @@ const Buttons = styled.div`
 const Button = styled.button`
     outline: none;
     border: none;
+    background-color: transparent;
     text-transform: uppercase;
-    border-radius: 20px;
     text-align: center;
     padding: 0.4rem 1.2rem;
     cursor: pointer;
     font-size: 1.1rem;
+    color: #fff;
+`;
+
+const SLink = styled(Link)`
+    border-radius: 20px;
     transition: 0.4s;
+    &:first-child {
+        background-color: #2980b9;
+    }
     &:hover {
         border-radius: 1px;
-    }
-    &:first-child {
-        color: #fff;
-        background-color: #16a085;
-    }
-    &:nth-child(2) {
-        color: #fff;
-        background-color: #27ae60;
-    }
-    &:last-child {
-        color: #fff;
-        background-color: #2980b9;
     }
 `;
 
@@ -84,9 +81,9 @@ function Detail({ todoObj }) {
             </Row>
             <Contents>{todoObj?.todo.contents}</Contents>
             <Buttons>
-                <Button>edit</Button>
-                <Button>del</Button>
-                <Button>back</Button>
+                <SLink to="/">
+                    <Button>back</Button>
+                </SLink>
             </Buttons>
         </Container>
     );

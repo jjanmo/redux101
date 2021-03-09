@@ -79,3 +79,25 @@ To do this, I can use subscribe method in store. **Subscribe method allow for me
     And **function can not effect function's outside environment and can not change given argument directly**. If I wanna change input state, just produce new one.(Can not mutate)
 
     <u>Reducer is pure function. So, it can not mutate state directly, just should return new state.</u>
+
+<br />
+
+## React Redux
+
+### TodoApp
+
+> Make react redux todoapp : If you look source code, change branch `react-redux-todoapp`
+
+> This is blueprint of react redux todoapp
+
+![react-redux-todoapp](image/react-redux-todoapp.png)
+
+<br />
+
+`How to use react redux:`
+
+`How to store data in react redux:`
+
+-   localstorage
+
+-   redux persist
