@@ -8,7 +8,11 @@
 
 ### Counter
 
-![Preview]()
+> Preview
+
+![Preview](image/vanilla-redux-counter.gif)
+
+<br />
 
 > Make vanilla redux counter : If you want to see the code, change branch `vanilla-redux-counter`
 
@@ -54,7 +58,7 @@ Reducer is a `FUNCTION` that modifies my data. And if reducer return <u>somethin
 
 <br />
 
-```js
+```javascript
 store.dispatch(action object);
 ```
 
@@ -105,7 +109,11 @@ Step5 : There is new state in store. Call **listener** subscribed and they can u
 
 ### TodoApp
 
-![Preview]()
+> Preview
+
+![Preview](image/vanilla-redux-todoapp.gif)
+
+<br />
 
 > Make vinilla redux todoapp : If you want to see the code, change branch `vanilla-redux-todoapp`
 
@@ -142,13 +150,15 @@ Three Principle in Redux
 
 > Make react redux todoapp : If you want to see the code, change branch `react-redux-todoapp`
 
-![Preview]()
+<br />
 
-> 최종적으로 실제로 만들어지 TodoApp의 모습이다.
+> This is blueprint of react redux todoapp(내가 만들 Todo앱의 설계도)
 
-![react-redux-todoapp](image/react-redux-todoapp.png)
+![react-redux-todoapp](image/react-redux-todoapp-blueprint.png)
 
-> This is blueprint of react redux todoapp
+> Preview
+
+![Preview](image/react-redux-todoapp.gif)
 
 <br />
 
@@ -157,7 +167,7 @@ How to use react redux
 <br />
 <br />
 
-### Additional things to do
+### 추가과제
 
 - [ ] Todo의 업데이트 기능 구현하기
 

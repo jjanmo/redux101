@@ -6,9 +6,9 @@ import store from './store';
 import GlobalStyles from './globalStyles';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <GlobalStyles />
-        <App />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <GlobalStyles />
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
