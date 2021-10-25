@@ -115,7 +115,7 @@ Step5 : There is new state in store. Call **listener** subscribed and they can u
 
 <br />
 
-> Make vinilla redux todoapp : If you want to see the code, change branch `vanilla-redux-todoapp`
+> Make vanilla redux todoapp : If you want to see the code, change branch `vanilla-redux-todoapp`
 
 > I learned three principle of redux. Especially, I understanded how to change state in redux.
 
