@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { actionCreator } from '../store';
+import * as todoActions from '../reducers/todos';
 
 const Todo = styled.li`
   width: 100%;
@@ -39,27 +38,21 @@ const Button = styled.button`
   background-color: #27ae60;
 `;
 
-function Item({ dispatchEditStatus, dispatchDeleteTodo, ...rest }) {
-  const onChange = () => {
-    dispatchEditStatus();
-  };
+function Item({ id, title, isDone }) {
+  console.log(id, 'iteme');
+  const onChange = () => {};
+
+  const onClick = () => {};
 
   return (
     <Todo>
-      <input type="checkbox" name="checkbox" onChange={onChange} checked={rest.status} />
-      <SLink to={`/${rest.id}`}>
-        <Title status={rest.status}>{rest.todo.title}</Title>
+      <input type="checkbox" name="checkbox" onChange={onChange} checked={isDone} />
+      <SLink to={`/${id}`}>
+        <Title isDone={isDone}>{title}</Title>
       </SLink>
-      <Button onClick={dispatchDeleteTodo}>Del</Button>
+      <Button onClick={onClick}>Del</Button>
     </Todo>
   );
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
-  return {
-    dispatchDeleteTodo: () => dispatch(actionCreator.deleteTodo(ownProps.id)),
-    dispatchEditStatus: () => dispatch(actionCreator.editStatus(ownProps.id)),
-  };
-}
-
-export default connect(null, mapDispatchToProps)(Item);
+export default Item;
