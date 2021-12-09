@@ -78,7 +78,6 @@ function Detail(props) {
 
   useEffect(() => {
     const _todo = todos.filter((todo) => todo.id === id.current)[0];
-    console.log('⭐️', _todo);
     setTodo(_todo);
   }, [todos]);
 
@@ -86,7 +85,7 @@ function Detail(props) {
     <Container>
       <Title>{todo.title}</Title>
       <Row>
-        <span>{todo.idDone ? 'Completed 👍 | ' : 'Progressing 🙏 '}</span>
+        <span>{todo.idDone ? 'Completed 👍 | ' : 'Progressing 🏃'}</span>
         {todo.date && <span>{parsedDate(todo.date)}</span>}
       </Row>
       <Contents>{todo.description}</Contents>

@@ -40,6 +40,7 @@ export default (state = initialState, action) => {
             ...action.payload,
             id: Date.now(),
             isDone: false,
+            date: new Date(),
           },
         ],
       };

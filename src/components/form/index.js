@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Container, Input, Button, Textarea } from './style';
 import * as todoActions from '../../reducers/todos';
 
-function Form({ todos, dispatchAddTodo }) {
+function Form() {
+  const dispatch = useDispatch();
   const [todo, setTodo] = useState({
     title: '',
-    contents: '',
+    description: '',
   });
 
-  const { title, contents } = todo;
+  const { title, description } = todo;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatchAddTodo(todo);
+    if (!title || !description) return;
+
+    dispatch(todoActions.addTodo(todo));
     setTodo({
       title: '',
-      contents: '',
+      description: '',
     });
   };
 
@@ -33,20 +36,10 @@ function Form({ todos, dispatchAddTodo }) {
       <form onSubmit={onSubmit}>
         <Input type="text" name="title" onChange={onChange} value={title} autoFocus />
         <Button>Add</Button>
-        <Textarea name="contents" rows="5" onChange={onChange} value={contents} />
+        <Textarea name="description" rows="5" onChange={onChange} value={description} />
       </form>
     </Container>
   );
 }
 
-function mapStateToProps(state) {
-  return { todos: state };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatchAddTodo: (todo) => dispatch(todoActions.addTodo(todo)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default Form;
