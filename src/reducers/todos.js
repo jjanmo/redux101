@@ -21,15 +21,7 @@ export const editStatus = (id) => ({
 });
 
 const initialState = {
-  todos: [
-    {
-      id: Date.now(),
-      title: 'Study Redux 🚀',
-      description: 'Hello World',
-      isDone: false,
-      date: new Date(),
-    },
-  ],
+  todos: [],
 };
 
 // reducers

@@ -19,11 +19,20 @@ function switchDay(number) {
   }
 }
 
-export function parsedDate(dateObj) {
-  const year = dateObj.getFullYear();
-  const month = dateObj.getMonth() + 1;
-  const date = dateObj.getDate();
-  const day = switchDay(dateObj.getDay());
+export function parsedDate(date) {
+  let year, month, _date, day;
 
-  return `${year}년 ${month}월 ${date}일 ${day}요일`;
+  if (typeof date === 'string') {
+    year = date.slice(0, 4);
+    month = date.slice(5, 7);
+    _date = date.slice(8, 10);
+    day = switchDay(new Date(date.slice(0, 10)).getDay());
+  } else {
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    _date = date.getDate();
+    day = switchDay(date.getDay());
+  }
+
+  return `${year}년 ${month}월 ${_date}일 ${day}요일`;
 }
