@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { parsedDate } from '../../utils/date';
-import { Container, Title, Row, Contents, ButtonContainer, BackButton, SLink } from './style';
+import { Container, Title, Row, Contents, ButtonContainer, Button, SLink } from './style';
 
 function Detail(props) {
   const todos = useSelector((state) => state.todos);
@@ -23,7 +23,15 @@ function Detail(props) {
       <Contents>{todo.description}</Contents>
       <ButtonContainer>
         <SLink to="/">
-          <BackButton>back</BackButton>
+          <Button>back</Button>
+        </SLink>
+        <SLink
+          to={{
+            pathname: '/edit',
+            state: todo,
+          }}
+        >
+          <Button>edit</Button>
         </SLink>
       </ButtonContainer>
     </Container>

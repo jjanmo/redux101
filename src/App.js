@@ -1,13 +1,17 @@
 import React from 'react';
-import { Route, HashRouter as Router } from 'react-router-dom';
-import Detail from './routers/Detail';
-import Home from './routers/Home';
+import { Route, HashRouter as Router, Switch } from 'react-router-dom';
+import Home from './routers/home';
+import Edit from './routers/edit';
+import Detail from './routers/detail';
 
 function App() {
   return (
     <Router>
-      <Route path="/" exact component={Home} />
-      <Route path="/:id" exact component={Detail} />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/edit" exact component={Edit} />
+        <Route path="/:id" exact component={Detail} />
+      </Switch>
     </Router>
   );
 }

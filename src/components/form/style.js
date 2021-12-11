@@ -19,6 +19,7 @@ export const Textarea = styled.textarea`
   outline: none;
   padding: 0.5rem;
   width: 100%;
+  resize: none;
 `;
 export const Button = styled.button`
   all: unset;

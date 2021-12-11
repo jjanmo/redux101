@@ -1,6 +1,6 @@
 import React from 'react';
-import Form from '../../components/form';
 import Header from '../../components/header';
+import Form from '../../components/form';
 import List from '../../components/list';
 import { Container } from './style';
 

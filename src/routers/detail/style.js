@@ -8,7 +8,7 @@ export const Container = styled.section`
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-  padding: 5rem;
+  padding: 3rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -45,16 +45,17 @@ export const ButtonContainer = styled.div`
   width: 70%;
 `;
 
-export const BackButton = styled.button`
+export const Button = styled.button`
+  width: 200px;
   outline: none;
   border: none;
   background-color: transparent;
   text-transform: uppercase;
   text-align: center;
   padding: 0.4rem 1.2rem;
-  cursor: pointer;
   font-size: 1.1rem;
   color: #fff;
+  cursor: pointer;
 `;
 
 export const SLink = styled(Link)`
@@ -62,6 +63,9 @@ export const SLink = styled(Link)`
   transition: 0.4s;
   &:first-child {
     background-color: #2980b9;
+  }
+  &:last-child {
+    background-color: #00b894;
   }
   &:hover {
     border-radius: 1px;
