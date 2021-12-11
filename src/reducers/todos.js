@@ -1,9 +1,7 @@
-// actions
 const ADD_TODO = 'todos/ADD_TODO';
 const DELETE_TODO = 'todos/DELETE_TODO';
 const EDIT_STATUS = 'todos/EDIT_STATUS';
 
-// action creator
 export const addTodo = (todo) => ({
   type: ADD_TODO,
   payload: todo,
@@ -46,7 +44,9 @@ export default (state = initialState, action) => {
       };
     }
     case DELETE_TODO: {
-      return;
+      return {
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
+      };
     }
     case EDIT_STATUS: {
       return {

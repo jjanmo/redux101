@@ -5,19 +5,21 @@ import { Todo, SLink, Title, Button, Checkbox } from './style';
 
 function Item({ id, title, isDone }) {
   const dispatch = useDispatch();
-  const onChange = () => {
+  const onChangeStatus = () => {
     dispatch(todoActions.editStatus(Number(id)));
   };
 
-  const onClick = () => {};
+  const onClickDelete = () => {
+    dispatch(todoActions.deleteTodo(Number(id)));
+  };
 
   return (
     <Todo>
-      <Checkbox type="checkbox" name="checkbox" onChange={onChange} checked={isDone} />
+      <Checkbox type="checkbox" name="checkbox" onChange={onChangeStatus} checked={isDone} />
       <SLink to={`/${id}`}>
         <Title isDone={isDone}>{title}</Title>
       </SLink>
-      <Button onClick={onClick}>Del</Button>
+      <Button onClick={onClickDelete}>Del</Button>
     </Todo>
   );
 }
