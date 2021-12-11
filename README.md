@@ -133,6 +133,6 @@ store.subscribe(listener);
 
 ## Ref
 
-- [Redux and React Native, simple login example flow](<(https://medium.com/@aurelie.lebec/redux-and-react-native-simple-login-example-flow-c4874cf91dde)>)
+- [Redux and React Native, simple login example flow](https://medium.com/@aurelie.lebec/redux-and-react-native-simple-login-example-flow-c4874cf91dde)
 
 - [Redux 공식홈페이지](https://ko.redux.js.org/)
