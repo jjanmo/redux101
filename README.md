@@ -4,6 +4,9 @@
 
 <details>
 <summary style="font-size : 18px">Log</summary>
+<br />
+21.12. 마무리를 위해서 다시 시작!!<br />
+21.12.12 Finish Project<br />
 </details>
 
 <br />
@@ -118,7 +121,13 @@ store.subscribe(listener);
 
 > branch `master`
 
-![Preview](screenshots/react-redux-todoapp.gif)
+![TodoApp](screenshots/react-redux-todoapp.gif)
+
+> TodoApp의 CRUD 기능과 할 일 저장 기능
+
+![redux-persist](screenshots/redux-persist.png)
+
+> redux-persist를 통한 local-storage에 할 일 저장
 
 <br />
 
