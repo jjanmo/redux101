@@ -29,9 +29,12 @@ export const Button = styled.button`
   color: #fff;
   background-color: #27ae60;
 `;
-export const Title = styled.span.attrs((props) => ({
-  textDecoration: props.status ? 'line-through' : 'none',
-}))`
+export const Checkbox = styled.input`
+  width: 20px;
+  height: 20px;
+`;
+export const Title = styled.span`
+  text-decoration: ${(props) => (props.isDone ? 'line-Through' : 'none')};
   margin: 0 0.2rem;
   padding: 0.3rem;
   font-size: 1.2rem;

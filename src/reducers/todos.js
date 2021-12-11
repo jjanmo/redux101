@@ -49,7 +49,18 @@ export default (state = initialState, action) => {
       return;
     }
     case EDIT_STATUS: {
-      return;
+      return {
+        todos: state.todos.map((todo) => {
+          if (todo.id === action.payload) {
+            return {
+              ...todo,
+              isDone: !todo.isDone,
+            };
+          }
+
+          return todo;
+        }),
+      };
     }
     default: {
       return {

@@ -1,15 +1,19 @@
 import React from 'react';
-import { Todo, SLink, Title, Button } from './style';
+import { useDispatch } from 'react-redux';
 import * as todoActions from '../../reducers/todos';
+import { Todo, SLink, Title, Button, Checkbox } from './style';
 
 function Item({ id, title, isDone }) {
-  const onChange = () => {};
+  const dispatch = useDispatch();
+  const onChange = () => {
+    dispatch(todoActions.editStatus(Number(id)));
+  };
 
   const onClick = () => {};
 
   return (
     <Todo>
-      <input type="checkbox" name="checkbox" onChange={onChange} checked={isDone} />
+      <Checkbox type="checkbox" name="checkbox" onChange={onChange} checked={isDone} />
       <SLink to={`/${id}`}>
         <Title isDone={isDone}>{title}</Title>
       </SLink>

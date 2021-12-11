@@ -85,7 +85,7 @@ function Detail(props) {
     <Container>
       <Title>{todo.title}</Title>
       <Row>
-        <span>{todo.idDone ? 'Completed 👍 | ' : 'Progressing 🏃'}</span>
+        <span>{todo.isDone ? 'Completed 👍' : 'Progressing 🏃'}</span>
         {todo.date && <span>{parsedDate(todo.date)}</span>}
       </Row>
       <Contents>{todo.description}</Contents>
