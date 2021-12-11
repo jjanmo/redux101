@@ -7,14 +7,18 @@ export const Container = styled.section`
   justify-content: flex-start;
   width: 80%;
 `;
-export const Input = styled.input`
+export const Input = styled.input.attrs({
+  placeholder: 'Enter Todo Title ~!',
+})`
   width: 60%;
   margin: 1rem 0;
   font-size: 1.2rem;
   outline: none;
   padding: 0.2rem 0.5rem;
 `;
-export const Textarea = styled.textarea`
+export const Textarea = styled.textarea.attrs({
+  placeholder: 'Enter Todo Description ~!',
+})`
   font-size: 1.2rem;
   outline: none;
   padding: 0.5rem;

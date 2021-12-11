@@ -55,12 +55,13 @@ export default (state = initialState, action) => {
       };
     }
     case EDIT_TODO: {
-      const { id, description } = action.payload;
+      const { id, title, description } = action.payload;
       return {
         todos: state.todos.map((todo) => {
           if (todo.id === id) {
             return {
               ...todo,
+              title,
               description,
             };
           }

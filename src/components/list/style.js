@@ -7,4 +7,6 @@ export const Container = styled.ul`
   flex-direction: column;
   align-items: flex-start;
   padding: 1rem 3rem;
+  overflow: auto;
+  height: 450px;
 `;

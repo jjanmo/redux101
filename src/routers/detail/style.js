@@ -33,6 +33,7 @@ export const Contents = styled.div`
   margin-top: 1rem;
   padding: 1rem;
   border-top: 3px solid #eee;
+  white-space: pre;
 `;
 
 export const ButtonContainer = styled.div`

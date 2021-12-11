@@ -1,16 +1,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import * as todoActions from '../../reducers/todos';
+import * as todosActions from '../../reducers/todos';
 import { Todo, SLink, Title, Button, Checkbox } from './style';
 
 function Item({ id, title, isDone }) {
   const dispatch = useDispatch();
   const onChangeStatus = () => {
-    dispatch(todoActions.editStatus(Number(id)));
+    dispatch(todosActions.editStatus(Number(id)));
   };
 
   const onClickDelete = () => {
-    dispatch(todoActions.deleteTodo(Number(id)));
+    dispatch(todosActions.deleteTodo(Number(id)));
   };
 
   return (

@@ -1,24 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import * as todosActions from '../../reducers/todos';
 import { parsedDate } from '../../utils/date';
-import { Container, Title, Row, ButtonContainer, Button } from '../detail/style';
-import { SLink, Textarea } from './style';
+import { Container, Row, ButtonContainer, Button } from '../detail/style';
+import { Input, SLink, Textarea } from './style';
 
 function Edit(props) {
-  const todo = props.location.state;
-  const [description, setDescription] = useState(todo.description);
+  const dispatch = useDispatch();
+  const todoObj = props.location.state;
+  const [todo, setTodo] = useState({ title: todoObj.title, description: todoObj.description });
+  const { title, description } = todo;
 
   const onChange = (e) => {
-    const _description = e.target.value;
-    setDescription(_description);
+    const { value, name } = e.target;
+    setTodo({
+      ...todo,
+      [name]: value,
+    });
   };
 
+  const onClickSave = () => {
+    dispatch(
+      todosActions.editTodo({
+        id: todoObj.id,
+        ...todo,
+      })
+    );
+  };
   return (
     <Container>
-      <Title>{todo.title}</Title>
+      <Input type="text" name="title" onChange={onChange} value={title} autoFocus />
       <Row>
-        <span>{todo.isDone ? 'Completed 👍' : 'Progressing 🏃'}</span>
-        {todo.date && <span>{parsedDate(todo.date)}</span>}
+        <span>{todoObj.isDone ? 'Completed 👍' : 'Progressing 🏃'}</span>
+        {todoObj.date && <span>{parsedDate(todoObj.date)}</span>}
       </Row>
       <Textarea name="description" rows="5" onChange={onChange} value={description} />
       <ButtonContainer>
@@ -26,7 +40,7 @@ function Edit(props) {
           <Button>cancel</Button>
         </SLink>
         <SLink to="/">
-          <Button>save</Button>
+          <Button onClick={onClickSave}>save</Button>
         </SLink>
       </ButtonContainer>
     </Container>

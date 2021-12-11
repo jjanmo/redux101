@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const Input = styled.input`
+  width: 60%;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 0.2rem 0.5rem;
+`;
 export const Textarea = styled.textarea`
   font-size: 1.2rem;
   outline: none;

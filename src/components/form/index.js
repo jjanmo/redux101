@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Container, Input, Button, Textarea } from './style';
-import * as todoActions from '../../reducers/todos';
+import * as todosActions from '../../reducers/todos';
 
 function Form() {
   const dispatch = useDispatch();
@@ -14,9 +14,9 @@ function Form() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!title || !description) return;
+    if (!title) return;
 
-    dispatch(todoActions.addTodo(todo));
+    dispatch(todosActions.addTodo(todo));
     setTodo({
       title: '',
       description: '',
